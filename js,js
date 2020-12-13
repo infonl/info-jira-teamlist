@@ -1,0 +1,68 @@
+/**
+
+Show a list of team members 
+- can be used during standup
+- can differ per day of the week 
+
+
+Settings in "User Javascript and CSS" plugin
+Name: GRY Teams JS
+URLs: jira.*RapidBoard.jsp*
+Options
+- Javascript
+- Libraries jQuery 3
+
+*/
+function appendMemberList() {
+
+	var oDate = new Date();
+	var dayOfTheWeek = oDate.getDay();
+	console.log(dayOfTheWeek);
+	var amemberList = [];
+	amemberList[1] = "Ni Ri Vl Ad Ge Is Ja Lb Mar (PO)"; // mon
+	amemberList[2] = "Ni (Pa) Ri Vl Ad Ge Is Ja Lb Mar Mau (PO)"; // tue
+	amemberList[3] = "Ni Ri Vl Ad Ge Is Ja Lb Mau (PO)"; // wed
+	amemberList[4] = "Ni (Pa) Ri Vl Ad Ge Is Ja Lb Mar Mau (PO)"; // thu
+	amemberList[5] = "Ni (Pa) Ri Vl Ad Ge Is Ja Lb Mar Mau"; // fri
+	amemberList[6] = "enjoy_the_weekend"; // Sat
+	amemberList[0] = "enjoy_the_weekend"; // Sun
+	
+	var aMemberList = amemberList[dayOfTheWeek].split(" ");
+	//shuffleArray(aMemberList); // shuffles the list
+	var memberList = aMemberList.join(" ");
+	
+	$('.ghx-column:nth-child(1) .ghx-column-title').html("To Do --- " + memberList );
+
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+(function () {
+
+	// wait 2 secs for the navbar / header to popup
+	setTimeout(function() {
+				$('.aui-nav-item').on('click', function () {
+			// click on Backlog view button
+			//if ($.contains(this, $('.agile-icon-plan').get(0))) {
+				setTimeout(function () {
+					appendMemberList();
+				}, 1200);
+		//	}
+		});
+		
+		// change of Quick filter or Release/Epic
+		$(document).on('click', '.js-quickfilter-button, .ghx-classification-item', function (e) {
+			clearTimeout(timer);
+			timer = setTimeout(function() {
+				appendMemberList();
+			}, 2000)
+		})	
+		
+		appendMemberList();
+	}, 2000); // wait for ajax-list to be loaded.. if link fails to show: increase amount here
+})();

@@ -17,7 +17,7 @@ function appendMemberList() {
 
 	var oDate = new Date();
 	var dayOfTheWeek = oDate.getDay();
-	console.log(dayOfTheWeek);
+	//console.log(dayOfTheWeek);
 	var amemberList = [];
 	amemberList[1] = "Ni Ri Vl Ad Ge Is Ja Lb Mar (PO)"; // mon
 	amemberList[2] = "Ni (Pa) Ri Vl Ad Ge Is Ja Lb Mar Mau (PO)"; // tue

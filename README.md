@@ -4,7 +4,7 @@ Show a list of team members
 - can be used during standup
 - can differ per day of the week 
 
-Uses the 'User JavaScript and CSS' extension for Chromehttps://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld?hl=en
+Uses the 'User JavaScript and CSS' extension for Chrome https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld?hl=en
 
 Install
 =====================

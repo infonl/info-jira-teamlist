@@ -1,4 +1,4 @@
-/**
+/*
 
 Show a list of team members 
 - can be used during standup
@@ -6,7 +6,7 @@ Show a list of team members
 
 
 Settings in "User Javascript and CSS" plugin
-Name: GRY Teams JS
+Name: Teams JS
 URLs: jira.*RapidBoard.jsp*
 Options
 - Javascript
@@ -17,13 +17,12 @@ function appendMemberList() {
 
 	var oDate = new Date();
 	var dayOfTheWeek = oDate.getDay();
-	//console.log(dayOfTheWeek);
 	var amemberList = [];
-	amemberList[1] = "Ni Ri Vl Ad Ge Is Ja Lb Mar (PO)"; // mon
-	amemberList[2] = "Ni (Pa) Ri Vl Ad Ge Is Ja Lb Mar Mau (PO)"; // tue
-	amemberList[3] = "Ni Ri Vl Ad Ge Is Ja Lb Mau (PO)"; // wed
-	amemberList[4] = "Ni (Pa) Ri Vl Ad Ge Is Ja Lb Mar Mau (PO)"; // thu
-	amemberList[5] = "Ni (Pa) Ri Vl Ad Ge Is Ja Lb Mar Mau"; // fri
+	amemberList[1] = "Ni Ri Ad Ge Is Ja (Ke) Lb Mar Hr (PO)"; // mon
+	amemberList[2] = "Ni (Pa) Ri Ad Ge Is Ja Lb Mar Mau Hr (PO)"; // tue
+	amemberList[3] = "Ni Ri Ad Ge Is Ja Lb Mau Hr (PO)"; // wed
+	amemberList[4] = "Ni (Pa) Ri Ad Ge Is Ja (Ke) Lb Mar Mau Hr (PO)"; // thu
+	amemberList[5] = "Ni (Pa) Ri Ad Ge Is Ja (Ke) Lb Mar Mau"; // fri
 	amemberList[6] = "enjoy_the_weekend"; // Sat
 	amemberList[0] = "enjoy_the_weekend"; // Sun
 	
@@ -55,12 +54,28 @@ function shuffleArray(array) {
 		//	}
 		});
 		
-		// change of Quick filter or Release/Epic
+		// reinitiate after change of Quick filter or Release/Epic
 		$(document).on('click', '.js-quickfilter-button, .ghx-classification-item', function (e) {
 			clearTimeout(timer);
 			timer = setTimeout(function() {
 				appendMemberList();
 			}, 2000)
+		})	
+		
+		// reinitiate after Click on issue
+		$(document).on('click', '.ghx-issue', function (e) {
+			clearTimeout(timer);
+			timer = setTimeout(function() {
+				appendMemberList();
+			}, 1000)
+		})	
+		
+		// reinitiate after moving an issue
+		$(document).on('mouseout', '.ghx-issue', function (e) {
+			clearTimeout(timer);
+			timer = setTimeout(function() {
+				appendMemberList();
+			}, 500)
 		})	
 		
 		appendMemberList();

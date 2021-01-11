@@ -1,8 +1,11 @@
 # jira-teamlist
 
-Show a list of team members 
+Show a list of team members next to title of first column of Active Sprint board (the scrumboard)
+Looks like this:  Ni Ri Ad Ge Is Ja (Ke) Lb Mar Hr (PO)
 - can be used during standup
-- can differ per day of the week 
+- Content of list can differ per day of the week (Mon-Sun). Especially nice with part-timers tht don't pop up on their free day.
+
+Tip: Put the abbreviation of the name of someone who is optional (like an PO = Product Owner) between round brackets.
 
 Uses the 'User JavaScript and CSS' extension for Chrome https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld?hl=en
 

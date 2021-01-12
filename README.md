@@ -5,6 +5,9 @@ Looks like this:  Ni Ri Ad Ge Is Ja (Ke) Lb Mar Hr (PO)
 - Can be used during standup so everybody knows the order (especially nice when doing a videocall)
 - Content of list can differ per day of the week (Mon-Sun). Especially nice with part-timers tht don't pop up on their free day.
 
+
+![Screenshot](https://raw.githubusercontent.com/infonl/jira-teamlist/main/Screenshot%20Team%20list.png "Screenshot")
+
 Tip: Put the abbreviation of the name of someone who is optional (like an PO = Product Owner) between round brackets.
 
 Uses the 'User JavaScript and CSS' extension for Chrome https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld?hl=en

@@ -13,16 +13,18 @@ Options
 - Libraries jQuery 3
 
 */
+
+var timer;
 function appendMemberList() {
 
 	var oDate = new Date();
 	var dayOfTheWeek = oDate.getDay();
 	var amemberList = [];
-	amemberList[1] = "Ni Ri Ad Ge Is Ja (Ke) Lb Mar Hr (PO)"; // mon
-	amemberList[2] = "Ni (Pa) Ri Ad Ge Is Ja Lb Mar Mau Hr (PO)"; // tue
-	amemberList[3] = "Ni Ri Ad Ge Is Ja Lb Mau Hr (PO)"; // wed
-	amemberList[4] = "Ni (Pa) Ri Ad Ge Is Ja (Ke) Lb Mar Mau Hr (PO)"; // thu
-	amemberList[5] = "Ni (Pa) Ri Ad Ge Is Ja (Ke) Lb Mar Mau"; // fri
+	amemberList[1] = "Ni Ri Ad Ge Is Ja (Ke) St Mar Hr (PO)"; // mon
+	amemberList[2] = "Ni (Pa) Ri Ad Ge Is Ja St Mar Hr (PO)"; // tue
+	amemberList[3] = "Ni Ri Ad Ge Is Ja St Hr (PO)"; // wed
+	amemberList[4] = "Ni (Pa) Ri Ad Ge Is Ja (Ke) St Mar Hr (PO)"; // thu
+	amemberList[5] = "Ni (Pa) Ri Ad Ge Is Ja (Ke) St Mar"; // fri
 	amemberList[6] = "enjoy_the_weekend"; // Sat
 	amemberList[0] = "enjoy_the_weekend"; // Sun
 	
@@ -31,8 +33,43 @@ function appendMemberList() {
 	var memberList = aMemberList.join(" ");
 	
 	$('.ghx-column:nth-child(1) .ghx-column-title').html("To Do --- " + memberList );
+	
+	var aTipList = [];
+	var startDateOfSprint = new Date("2021-01-20"); // first standup day of sprint 1
+	
+	// To calculate the time difference between today and the first day of sprint 1 
+	var timeSinceSprintOneStart = oDate.getTime() - startDateOfSprint.getTime(); 
+  
+	// To calculate the no. of days 
+	var daysSinceSprintOneStart = Math.floor(timeSinceSprintOneStart / (1000 * 3600 * 24)) + 1; 
+	//console.log("daysSinceSprintOneStart: " + daysSinceSprintOneStart);
+	
+	// To calculate day since current sprint start (14 dys sprint)
+	var dayNoOfCurrentSprint = daysSinceSprintOneStart % 14; 
+	//console.log("dayNoOfCurrentSprint: " + dayNoOfCurrentSprint);
+	
+	// set a tip per sprint day
+	aTipList[1] = ""; // wed
+	aTipList[2] = ""; // thu
+	aTipList[3] = ""; // fri
+	aTipList[4] = ""; // 
+	aTipList[5] = ""; // 
+	aTipList[6] = "Done?"; // mon
+	aTipList[7] = "Arch align?"; // tue
+	aTipList[8] = ""; // wed
+	aTipList[9] = "Done?"; // thu
+	aTipList[10] = ""; // fri
+	aTipList[11] = ""; // 
+	aTipList[12] = ""; // 
+	aTipList[13] = "GDI align?"; // mon
+	aTipList[14] = "change"; // tue
+
+	var tipList = aTipList[dayNoOfCurrentSprint];
+	$('.ghx-column:nth-child(4) .ghx-column-title').html("Done --- " + tipList );
 
 }
+
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {

@@ -8,7 +8,7 @@ Looks like this:  Ni Ri Ad Ge Is Ja (Ke) Lb Mar Hr (PO)
 Show a list of tips next to title of 4th column of Active Sprint board (the scrumboard)
 Looks like this:  "Done?"
 - Can be used during standup so everybody knows if there is a recurring special topic, like Done? means "Discuss if we get the full sprint Done?", "Arch align" means for us: "Tomorrow there is an architecture alignment. Do we have any topics?"
-- Content of list can differ per day of the sprint (1-14n). 
+- Content of list can differ per day of the sprint (1-14). 
 
 
 ![Screenshot](https://raw.githubusercontent.com/infonl/jira-teamlist/main/Screenshot%20Team%20list.png "Screenshot")

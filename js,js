@@ -34,7 +34,10 @@ function appendMemberList() {
 	//shuffleArray(aMemberList); // shuffles the list
 	var memberList = aMemberList.join(" ");
 	
-	$('.ghx-column:nth-child(1) .ghx-column-title').html($('.ghx-column:nth-child(1) .ghx-column-title').html() + " -- " + memberList );
+	// add text to 1st column (if it isnt in there already)
+	if ($('.ghx-column:nth-child(1) .ghx-column-title:contains("' + memberList + '")').length === 0) {
+		$('.ghx-column:nth-child(1) .ghx-column-title').html($('.ghx-column:nth-child(1) .ghx-column-title').html() + " -- " + memberList );
+	}
 	
 	var aTipList = [];
 	var startDateOfSprint = new Date("2021-01-20"); // first standup day of sprint 1
@@ -67,7 +70,11 @@ function appendMemberList() {
 	aTipList[14] = "change"; // tue
 
 	var tipList = aTipList[dayNoOfCurrentSprint];
-	$('.ghx-column:nth-child(4) .ghx-column-title').html($('.ghx-column:nth-child(4) .ghx-column-title').html() + " - " + tipList );
+	
+	// add text (if it isnt in there already)
+	if ($('.ghx-column:nth-child(4) .ghx-column-title:contains("' + tipList + '")').length === 0) {
+		$('.ghx-column:nth-child(4) .ghx-column-title').html($('.ghx-column:nth-child(4) .ghx-column-title').html() + " - " + tipList );
+	}
 
 }
 

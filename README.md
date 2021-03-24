@@ -26,6 +26,7 @@ Install
 5. Add the content of js.js to the JS pane
 6. Under Options enable Javascript &  Libraries jQuery 3
 8. If your JIRA url if different that this format: `jira.*/RapidBoard.jspa` (where * is a wildcard for any character): Edit the url under the Sites-tab -> should become your JIRA url, like `jira.yourdomain.com/jira/secure/RapidBoard.jspa`
-9. Hit Save
+9. If using JIRA cloud: change the jiraLicense-setting in the JS code
+10. Hit Save
 
 

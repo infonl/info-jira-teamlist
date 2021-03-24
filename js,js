@@ -17,10 +17,13 @@ Options
 */
 
 var timer;
+var jiraLicense = 'server'; // server or cloud
+
 function appendMemberList() {
 
 	var oDate = new Date();
 	var dayOfTheWeek = oDate.getDay();
+	var jiraColumnHeaderPath = '';
 	var amemberList = [];
 	amemberList[1] = "Ni Ri Ad Ge Is Ja (Ke) St Mar Hr (PO)"; // mon
 	amemberList[2] = "Ni (Pa) Ri Ad Ge Is Ja St Mar Hr (PO)"; // tue
@@ -29,18 +32,23 @@ function appendMemberList() {
 	amemberList[5] = "Ni (Pa) Ri Ad Ge Is Ja (Ke) St Mar"; // fri
 	amemberList[6] = "enjoy_the_weekend"; // Sat
 	amemberList[0] = "enjoy_the_weekend"; // Sun
+	var startDateOfSprint = new Date("2021-01-20"); // first standup day of sprint 1
+	
 	
 	var aMemberList = amemberList[dayOfTheWeek].split(" ");
 	//shuffleArray(aMemberList); // shuffles the list
 	var memberList = aMemberList.join(" ");
 	
-	// add text to 1st column (if it isnt in there already)
-	if ($('.ghx-column:nth-child(1) .ghx-column-title:contains("' + memberList + '")').length === 0) {
-		$('.ghx-column:nth-child(1) .ghx-column-title').html($('.ghx-column:nth-child(1) .ghx-column-title').html() + " -- " + memberList );
+	if (jiraLicense == 'server') {
+		jiraColumnHeaderPath = '.ghx-column-title';
+	} else {
+		jiraColumnHeaderPath = 'h2';
 	}
 	
-	var aTipList = [];
-	var startDateOfSprint = new Date("2021-01-20"); // first standup day of sprint 1
+	// add text to 1st column (if it isnt in there already)
+	if ($('.ghx-column:nth-child(1) '+jiraColumnHeaderPath+':contains("' + memberList + '")').length === 0) {
+		$('.ghx-column:nth-child(1) '+jiraColumnHeaderPath).html($('.ghx-column:nth-child(1) '+jiraColumnHeaderPath).html() + " -- " + memberList );
+	}
 	
 	// To calculate the time difference between today and the first day of sprint 1 
 	var timeSinceSprintOneStart = oDate.getTime() - startDateOfSprint.getTime(); 
@@ -54,6 +62,8 @@ function appendMemberList() {
 	//console.log("dayNoOfCurrentSprint: " + dayNoOfCurrentSprint);
 	
 	// set a tip per sprint day
+	var aTipList = [];
+	aTipList[0] = "change"; // tue
 	aTipList[1] = ""; // wed
 	aTipList[2] = ""; // thu
 	aTipList[3] = ""; // fri
@@ -67,13 +77,12 @@ function appendMemberList() {
 	aTipList[11] = ""; // 
 	aTipList[12] = ""; // 
 	aTipList[13] = "GDI align?"; // mon
-	aTipList[14] = "change"; // tue
 
 	var tipList = aTipList[dayNoOfCurrentSprint];
 	
-	// add text (if it isnt in there already)
-	if ($('.ghx-column:nth-child(4) .ghx-column-title:contains("' + tipList + '")').length === 0) {
-		$('.ghx-column:nth-child(4) .ghx-column-title').html($('.ghx-column:nth-child(4) .ghx-column-title').html() + " - " + tipList );
+	// add tiplist (if it isnt in there already)
+	if ($('.ghx-column:nth-child(4) '+jiraColumnHeaderPath+':contains("' + tipList + '")').length === 0) {
+		$('.ghx-column:nth-child(4) '+jiraColumnHeaderPath).html($('.ghx-column:nth-child(4) '+jiraColumnHeaderPath).html() + " - " + tipList );
 	}
 
 }
@@ -91,7 +100,7 @@ function shuffleArray(array) {
 
 	// wait 2 secs for the navbar / header to popup
 	setTimeout(function() {
-				$('.aui-nav-item').on('click', function () {
+		$('.aui-nav-item').on('click', function () {
 			// click on Backlog view button
 			//if ($.contains(this, $('.agile-icon-plan').get(0))) {
 				setTimeout(function () {
